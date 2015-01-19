@@ -3,18 +3,18 @@
  * @version 1.0
  *
  * @section License
- * Copyright (C) 2014, jediunix
+ * Copyright (C) 2014-2015, jeditekunum
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  */
 
 #include "TM1637.hh"
@@ -167,7 +167,7 @@ TM1637::write(uint8_t byte)
   m_dio.set_mode(IOPin::OUTPUT_MODE);
   m_dio.low();
   STALL;
-  
+
   m_clk.low();
   STALL;
 }

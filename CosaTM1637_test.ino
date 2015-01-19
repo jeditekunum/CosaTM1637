@@ -3,18 +3,18 @@
  * @version 1.0
  *
  * @section License
- * Copyright (C) 2014, jediunix
+ * Copyright (C) 2014-2015, jeditekunum
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  */
 
 #include "Cosa/IOStream/Driver/UART.hh"
@@ -57,7 +57,7 @@ void loop()
       STEP(tm1637.set(data));
     }
   STEP(tm1637.clear());
-  
+
   // Walking
   data[0] = tm1637.encode(0);
   for (i=0; i<4; i++)
@@ -105,7 +105,7 @@ void loop()
   for (i=0; i<4; i++)
     STEP(tm1637.set(data, 1, i));
   STEP(tm1637.clear());
-  
+
   // Step
   data[0] = TM1637::SEG_D;
   data[1] = TM1637::SEG_G;
@@ -114,7 +114,7 @@ void loop()
   for (i=0; i<4; i++)
     STEP(tm1637.set(&data[i], 1, i));
   STEP(tm1637.clear());
-  
+
   // Basic numbers with leading zeros
   for (i=0; i<10; i++)
     STEP(tm1637.show(i, true));
@@ -129,7 +129,7 @@ void loop()
   for (i=0; i<8; i++)
     STEP(tm1637.show(i, false, 2));
   STEP(tm1637.clear());
-  
+
   // Brightness Test
   uint8_t before = tm1637.brightness();
   for(i=TM1637::DIM; i<=TM1637::BRIGHT; i++)
