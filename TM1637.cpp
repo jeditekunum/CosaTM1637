@@ -96,21 +96,28 @@ TM1637::show(uint16_t number, bool leading_zeros,
   uint8_t value[] = {CLEAR, CLEAR, CLEAR, CLEAR};
   uint8_t digits = 0;
 
-  while (number)
+  if (number)
     {
-      if (digits < length)
+      while (number)
         {
-          value[length - 1 - digits] = pgm_read_byte(&table[number % base]);
-          digits++;
-          number /= base;
+          if (digits < length)
+            {
+              value[length - 1 - digits] = pgm_read_byte(&table[number % base]);
+              digits++;
+              number /= base;
+            }
+          else
+            break;
         }
-      else
-        break;
-    }
 
-  for (uint8_t i = 0; i < 4; i++)
-    if (value[i] == CLEAR)
-      value[i] = leading_zeros ? pgm_read_byte(&table[0]) : 0;
+      for (uint8_t i = 0; i < 4; i++)
+        if (value[i] == CLEAR)
+          value[i] = leading_zeros ? pgm_read_byte(&table[0]) : 0;
+    }
+  else
+    {
+      value[length-1] = pgm_read_byte(&table[0]);
+    }
 
   set(value, length, position);
 }
