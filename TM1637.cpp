@@ -163,7 +163,7 @@ TM1637::write(uint8_t byte)
   m_clk.low();
   STALL;
 
-  m_dio.set_mode(IOPin::INPUT_MODE);
+  m_dio.mode(IOPin::INPUT_MODE);
   STALL;
 
   m_clk.high();
@@ -171,7 +171,7 @@ TM1637::write(uint8_t byte)
 
   //  while(m_dio.read());
 
-  m_dio.set_mode(IOPin::OUTPUT_MODE);
+  m_dio.mode(IOPin::OUTPUT_MODE);
   m_dio.low();
   STALL;
 
