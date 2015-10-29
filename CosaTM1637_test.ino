@@ -17,7 +17,7 @@
  *
  */
 
-#include "Cosa/IOStream/Driver/UART.hh"
+#include "Cosa/UART.hh"
 #include "Cosa/Trace.hh"
 #include "Cosa/OutputPin.hh"
 
